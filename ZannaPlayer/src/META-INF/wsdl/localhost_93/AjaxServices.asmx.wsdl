@@ -1,0 +1,2597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ObterSessao">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObterSessaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObterSessaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:Cliente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RazaoSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CNPJ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Responsavel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Site" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataInicio" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Status">
+        <s:restriction base="s:string">
+          <s:enumeration value="Todos" />
+          <s:enumeration value="Inativo" />
+          <s:enumeration value="Ativo" />
+          <s:enumeration value="Excluido" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ClienteSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClienteSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClienteListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClienteListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClienteExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClienteObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidade" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClienteRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClienteRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="unidade" type="tns:Unidade" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Unidade">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UnidadeSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="UnidadeListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeListarPorCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeListarPorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeListarPorClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="unidadeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="unidadeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnidadeObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="genero" type="tns:Genero" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Genero">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeneroSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneroSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="GeneroListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneroListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneroExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneroObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneroObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mood" type="tns:Mood" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Mood">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MoodID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MoodSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoodSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="MoodListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoodListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="moodID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoodExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="moodID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MoodObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MoodObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="musica" type="tns:Musica" />
+            <s:element minOccurs="0" maxOccurs="1" name="uploadID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Musica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MusicaID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Artista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Album" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="tns:Genero" />
+          <s:element minOccurs="1" maxOccurs="1" name="MoodID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mood" type="tns:Mood" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvaliacaoMedia" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MusicaSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="MusicaListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaListarPorPlaylist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaListarPorPlaylistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaListarPorPlaylistResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="musicaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="musicaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaAvaliacaoSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="musicaID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nota" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaAvaliacaoSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaAvaliacaoSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaAvaliacaoOffline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="musicaID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nota" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaAvaliacaoOfflineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaAvaliacaoOfflineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="artista" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="album" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="generoID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="moodID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vinheta" type="tns:Vinheta" />
+            <s:element minOccurs="0" maxOccurs="1" name="uploadID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Vinheta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VinhetaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Intervalo" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCriacao" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VinhetaSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="VinhetaListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaListarPorCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaListarPorClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaListarPorClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vinhetaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vinhetaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="vinheta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VinhetaRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VinhetaRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="playlist" type="tns:Playlist" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Playlist">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PlaylistID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCriacao" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataEncerramento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Musicas" type="tns:ArrayOfMusica" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vinhetas" type="tns:ArrayOfVinheta" />
+          <s:element minOccurs="0" maxOccurs="1" name="Moods" type="tns:ArrayOfPlaylistMood" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMusica">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Musica" nillable="true" type="tns:Musica" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVinheta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vinheta" nillable="true" type="tns:Vinheta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlaylistMood">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlaylistMood" nillable="true" type="tns:PlaylistMood" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlaylistMood">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Playlist" type="tns:Playlist" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mood" type="tns:Mood" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraFim" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PlaylistSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistBaixar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PlaylistID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistBaixarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistBaixarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="PlaylistListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtivacao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processadorid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtivacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistAtivacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObterCompleto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObterCompletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistObterCompletoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="playlist" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataCriacao" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataEncerramento" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="tns:Usuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Usuario">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UsuarioID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unidade" type="tns:Unidade" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cargo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ramal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataNascimento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Administrador" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UsuarioSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="UsuarioListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usuarioID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioAlterarStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usuarioID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusID" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioAlterarStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioAlterarStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usuarioID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioEnviarDados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioEnviarDadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioEnviarDadosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioValidar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senha" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioValidarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioValidarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtualizacaoListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="PlaylistAtualizacaoListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistAtualizacaoListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtualizacaoRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="playlist" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataIni" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataFim" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtualizacaoRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistAtualizacaoRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistChaveListar">
+        <s:complexType />
+      </s:element>
+      <s:element name="PlaylistChaveListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistChaveListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistChaveRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="playlist" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataDownloadIni" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dataDownloadFim" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistChaveRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistChaveRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAvaliacaoRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="playlist" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAvaliacaoRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistAvaliacaoRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteSalvar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Enquete" type="tns:Enquete" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Enquete">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Respostas" type="tns:ArrayOfEnquete_Resposta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEnquete_Resposta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Enquete_Resposta" nillable="true" type="tns:Enquete_Resposta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Enquete_Resposta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Enquete" type="tns:Enquete" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnqueteSalvarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnqueteSalvarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteListar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnqueteListarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteExcluir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnqueteID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteExcluirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnqueteExcluirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnqueteID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnqueteObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnqueteObterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VencimentoRelatorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataVencimento" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VencimentoRelatorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VencimentoRelatorioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObterSessaoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterSessao" />
+  </wsdl:message>
+  <wsdl:message name="ObterSessaoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterSessaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClienteSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:ClienteSalvar" />
+  </wsdl:message>
+  <wsdl:message name="ClienteSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:ClienteSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClienteListarSoapIn">
+    <wsdl:part name="parameters" element="tns:ClienteListar" />
+  </wsdl:message>
+  <wsdl:message name="ClienteListarSoapOut">
+    <wsdl:part name="parameters" element="tns:ClienteListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClienteExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:ClienteExcluir" />
+  </wsdl:message>
+  <wsdl:message name="ClienteExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:ClienteExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClienteObterSoapIn">
+    <wsdl:part name="parameters" element="tns:ClienteObter" />
+  </wsdl:message>
+  <wsdl:message name="ClienteObterSoapOut">
+    <wsdl:part name="parameters" element="tns:ClienteObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClienteRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ClienteRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="ClienteRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ClienteRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:UnidadeSalvar" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:UnidadeSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeListarSoapIn">
+    <wsdl:part name="parameters" element="tns:UnidadeListar" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeListarSoapOut">
+    <wsdl:part name="parameters" element="tns:UnidadeListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeListarPorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:UnidadeListarPorCliente" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeListarPorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:UnidadeListarPorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:UnidadeExcluir" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:UnidadeExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeObterSoapIn">
+    <wsdl:part name="parameters" element="tns:UnidadeObter" />
+  </wsdl:message>
+  <wsdl:message name="UnidadeObterSoapOut">
+    <wsdl:part name="parameters" element="tns:UnidadeObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneroSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneroSalvar" />
+  </wsdl:message>
+  <wsdl:message name="GeneroSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneroSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneroListarSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneroListar" />
+  </wsdl:message>
+  <wsdl:message name="GeneroListarSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneroListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneroExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneroExcluir" />
+  </wsdl:message>
+  <wsdl:message name="GeneroExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneroExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneroObterSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneroObter" />
+  </wsdl:message>
+  <wsdl:message name="GeneroObterSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneroObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoodSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:MoodSalvar" />
+  </wsdl:message>
+  <wsdl:message name="MoodSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:MoodSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoodListarSoapIn">
+    <wsdl:part name="parameters" element="tns:MoodListar" />
+  </wsdl:message>
+  <wsdl:message name="MoodListarSoapOut">
+    <wsdl:part name="parameters" element="tns:MoodListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoodExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:MoodExcluir" />
+  </wsdl:message>
+  <wsdl:message name="MoodExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:MoodExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="MoodObterSoapIn">
+    <wsdl:part name="parameters" element="tns:MoodObter" />
+  </wsdl:message>
+  <wsdl:message name="MoodObterSoapOut">
+    <wsdl:part name="parameters" element="tns:MoodObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaSalvar" />
+  </wsdl:message>
+  <wsdl:message name="MusicaSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaListarSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaListar" />
+  </wsdl:message>
+  <wsdl:message name="MusicaListarSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaListarPorPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaListarPorPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="MusicaListarPorPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaListarPorPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaExcluir" />
+  </wsdl:message>
+  <wsdl:message name="MusicaExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaObterSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaObter" />
+  </wsdl:message>
+  <wsdl:message name="MusicaObterSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoSalvar" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoOfflineSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoOffline" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoOfflineSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="MusicaRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaSalvar" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaListarSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaListar" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaListarSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaListarPorClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaListarPorCliente" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaListarPorClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaListarPorClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaExcluir" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaObterSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaObter" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaObterSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:VinhetaRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="VinhetaRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:VinhetaRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistSalvar" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistBaixarSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistBaixar" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistBaixarSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistBaixarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistListarSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistListar" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistListarSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistExcluir" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtivacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistAtivacao" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtivacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistAtivacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistObter" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterCompletoSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistObterCompleto" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterCompletoSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistObterCompletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioSalvar" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioListarSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioListar" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioListarSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioExcluir" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioAlterarStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioAlterarStatus" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioAlterarStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioAlterarStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioObterSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioObter" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioObterSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioEnviarDadosSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioEnviarDados" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioEnviarDadosSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioEnviarDadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioValidarSoapIn">
+    <wsdl:part name="parameters" element="tns:UsuarioValidar" />
+  </wsdl:message>
+  <wsdl:message name="UsuarioValidarSoapOut">
+    <wsdl:part name="parameters" element="tns:UsuarioValidarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtualizacaoListarSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistAtualizacaoListar" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtualizacaoListarSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistAtualizacaoListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtualizacaoRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistAtualizacaoRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtualizacaoRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistAtualizacaoRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistChaveListarSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistChaveListar" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistChaveListarSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistChaveListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistChaveRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistChaveRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistChaveRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistChaveRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAvaliacaoRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistAvaliacaoRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAvaliacaoRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistAvaliacaoRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteSalvarSoapIn">
+    <wsdl:part name="parameters" element="tns:EnqueteSalvar" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteSalvarSoapOut">
+    <wsdl:part name="parameters" element="tns:EnqueteSalvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteListarSoapIn">
+    <wsdl:part name="parameters" element="tns:EnqueteListar" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteListarSoapOut">
+    <wsdl:part name="parameters" element="tns:EnqueteListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteExcluirSoapIn">
+    <wsdl:part name="parameters" element="tns:EnqueteExcluir" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteExcluirSoapOut">
+    <wsdl:part name="parameters" element="tns:EnqueteExcluirResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteObterSoapIn">
+    <wsdl:part name="parameters" element="tns:EnqueteObter" />
+  </wsdl:message>
+  <wsdl:message name="EnqueteObterSoapOut">
+    <wsdl:part name="parameters" element="tns:EnqueteObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="VencimentoRelatorioSoapIn">
+    <wsdl:part name="parameters" element="tns:VencimentoRelatorio" />
+  </wsdl:message>
+  <wsdl:message name="VencimentoRelatorioSoapOut">
+    <wsdl:part name="parameters" element="tns:VencimentoRelatorioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AjaxServicesSoap">
+    <wsdl:operation name="ObterSessao">
+      <wsdl:input message="tns:ObterSessaoSoapIn" />
+      <wsdl:output message="tns:ObterSessaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClienteSalvar">
+      <wsdl:input message="tns:ClienteSalvarSoapIn" />
+      <wsdl:output message="tns:ClienteSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClienteListar">
+      <wsdl:input message="tns:ClienteListarSoapIn" />
+      <wsdl:output message="tns:ClienteListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClienteExcluir">
+      <wsdl:input message="tns:ClienteExcluirSoapIn" />
+      <wsdl:output message="tns:ClienteExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClienteObter">
+      <wsdl:input message="tns:ClienteObterSoapIn" />
+      <wsdl:output message="tns:ClienteObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClienteRelatorio">
+      <wsdl:input message="tns:ClienteRelatorioSoapIn" />
+      <wsdl:output message="tns:ClienteRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeSalvar">
+      <wsdl:input message="tns:UnidadeSalvarSoapIn" />
+      <wsdl:output message="tns:UnidadeSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListar">
+      <wsdl:input message="tns:UnidadeListarSoapIn" />
+      <wsdl:output message="tns:UnidadeListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListarPorCliente">
+      <wsdl:input message="tns:UnidadeListarPorClienteSoapIn" />
+      <wsdl:output message="tns:UnidadeListarPorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeExcluir">
+      <wsdl:input message="tns:UnidadeExcluirSoapIn" />
+      <wsdl:output message="tns:UnidadeExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeObter">
+      <wsdl:input message="tns:UnidadeObterSoapIn" />
+      <wsdl:output message="tns:UnidadeObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneroSalvar">
+      <wsdl:input message="tns:GeneroSalvarSoapIn" />
+      <wsdl:output message="tns:GeneroSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneroListar">
+      <wsdl:input message="tns:GeneroListarSoapIn" />
+      <wsdl:output message="tns:GeneroListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneroExcluir">
+      <wsdl:input message="tns:GeneroExcluirSoapIn" />
+      <wsdl:output message="tns:GeneroExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneroObter">
+      <wsdl:input message="tns:GeneroObterSoapIn" />
+      <wsdl:output message="tns:GeneroObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoodSalvar">
+      <wsdl:input message="tns:MoodSalvarSoapIn" />
+      <wsdl:output message="tns:MoodSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoodListar">
+      <wsdl:input message="tns:MoodListarSoapIn" />
+      <wsdl:output message="tns:MoodListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoodExcluir">
+      <wsdl:input message="tns:MoodExcluirSoapIn" />
+      <wsdl:output message="tns:MoodExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MoodObter">
+      <wsdl:input message="tns:MoodObterSoapIn" />
+      <wsdl:output message="tns:MoodObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaSalvar">
+      <wsdl:input message="tns:MusicaSalvarSoapIn" />
+      <wsdl:output message="tns:MusicaSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListar">
+      <wsdl:input message="tns:MusicaListarSoapIn" />
+      <wsdl:output message="tns:MusicaListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <wsdl:input message="tns:MusicaListarPorPlaylistSoapIn" />
+      <wsdl:output message="tns:MusicaListarPorPlaylistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaExcluir">
+      <wsdl:input message="tns:MusicaExcluirSoapIn" />
+      <wsdl:output message="tns:MusicaExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaObter">
+      <wsdl:input message="tns:MusicaObterSoapIn" />
+      <wsdl:output message="tns:MusicaObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoSalvar">
+      <wsdl:input message="tns:MusicaAvaliacaoSalvarSoapIn" />
+      <wsdl:output message="tns:MusicaAvaliacaoSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <wsdl:input message="tns:MusicaAvaliacaoOfflineSoapIn" />
+      <wsdl:output message="tns:MusicaAvaliacaoOfflineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaRelatorio">
+      <wsdl:input message="tns:MusicaRelatorioSoapIn" />
+      <wsdl:output message="tns:MusicaRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaSalvar">
+      <wsdl:input message="tns:VinhetaSalvarSoapIn" />
+      <wsdl:output message="tns:VinhetaSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListar">
+      <wsdl:input message="tns:VinhetaListarSoapIn" />
+      <wsdl:output message="tns:VinhetaListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListarPorCliente">
+      <wsdl:input message="tns:VinhetaListarPorClienteSoapIn" />
+      <wsdl:output message="tns:VinhetaListarPorClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaExcluir">
+      <wsdl:input message="tns:VinhetaExcluirSoapIn" />
+      <wsdl:output message="tns:VinhetaExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaObter">
+      <wsdl:input message="tns:VinhetaObterSoapIn" />
+      <wsdl:output message="tns:VinhetaObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaRelatorio">
+      <wsdl:input message="tns:VinhetaRelatorioSoapIn" />
+      <wsdl:output message="tns:VinhetaRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistSalvar">
+      <wsdl:input message="tns:PlaylistSalvarSoapIn" />
+      <wsdl:output message="tns:PlaylistSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistBaixar">
+      <wsdl:input message="tns:PlaylistBaixarSoapIn" />
+      <wsdl:output message="tns:PlaylistBaixarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistListar">
+      <wsdl:input message="tns:PlaylistListarSoapIn" />
+      <wsdl:output message="tns:PlaylistListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistExcluir">
+      <wsdl:input message="tns:PlaylistExcluirSoapIn" />
+      <wsdl:output message="tns:PlaylistExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <wsdl:input message="tns:PlaylistAtivacaoSoapIn" />
+      <wsdl:output message="tns:PlaylistAtivacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <wsdl:input message="tns:PlaylistObterSoapIn" />
+      <wsdl:output message="tns:PlaylistObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObterCompleto">
+      <wsdl:input message="tns:PlaylistObterCompletoSoapIn" />
+      <wsdl:output message="tns:PlaylistObterCompletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistRelatorio">
+      <wsdl:input message="tns:PlaylistRelatorioSoapIn" />
+      <wsdl:output message="tns:PlaylistRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioSalvar">
+      <wsdl:input message="tns:UsuarioSalvarSoapIn" />
+      <wsdl:output message="tns:UsuarioSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioListar">
+      <wsdl:input message="tns:UsuarioListarSoapIn" />
+      <wsdl:output message="tns:UsuarioListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioExcluir">
+      <wsdl:input message="tns:UsuarioExcluirSoapIn" />
+      <wsdl:output message="tns:UsuarioExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioAlterarStatus">
+      <wsdl:input message="tns:UsuarioAlterarStatusSoapIn" />
+      <wsdl:output message="tns:UsuarioAlterarStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioObter">
+      <wsdl:input message="tns:UsuarioObterSoapIn" />
+      <wsdl:output message="tns:UsuarioObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioEnviarDados">
+      <wsdl:input message="tns:UsuarioEnviarDadosSoapIn" />
+      <wsdl:output message="tns:UsuarioEnviarDadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioValidar">
+      <wsdl:input message="tns:UsuarioValidarSoapIn" />
+      <wsdl:output message="tns:UsuarioValidarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoListar">
+      <wsdl:input message="tns:PlaylistAtualizacaoListarSoapIn" />
+      <wsdl:output message="tns:PlaylistAtualizacaoListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoRelatorio">
+      <wsdl:input message="tns:PlaylistAtualizacaoRelatorioSoapIn" />
+      <wsdl:output message="tns:PlaylistAtualizacaoRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveListar">
+      <wsdl:input message="tns:PlaylistChaveListarSoapIn" />
+      <wsdl:output message="tns:PlaylistChaveListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveRelatorio">
+      <wsdl:input message="tns:PlaylistChaveRelatorioSoapIn" />
+      <wsdl:output message="tns:PlaylistChaveRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAvaliacaoRelatorio">
+      <wsdl:input message="tns:PlaylistAvaliacaoRelatorioSoapIn" />
+      <wsdl:output message="tns:PlaylistAvaliacaoRelatorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteSalvar">
+      <wsdl:input message="tns:EnqueteSalvarSoapIn" />
+      <wsdl:output message="tns:EnqueteSalvarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteListar">
+      <wsdl:input message="tns:EnqueteListarSoapIn" />
+      <wsdl:output message="tns:EnqueteListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteExcluir">
+      <wsdl:input message="tns:EnqueteExcluirSoapIn" />
+      <wsdl:output message="tns:EnqueteExcluirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteObter">
+      <wsdl:input message="tns:EnqueteObterSoapIn" />
+      <wsdl:output message="tns:EnqueteObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VencimentoRelatorio">
+      <wsdl:input message="tns:VencimentoRelatorioSoapIn" />
+      <wsdl:output message="tns:VencimentoRelatorioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AjaxServicesSoap" type="tns:AjaxServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObterSessao">
+      <soap:operation soapAction="http://tempuri.org/ObterSessao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteSalvar">
+      <soap:operation soapAction="http://tempuri.org/ClienteSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteListar">
+      <soap:operation soapAction="http://tempuri.org/ClienteListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteExcluir">
+      <soap:operation soapAction="http://tempuri.org/ClienteExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteObter">
+      <soap:operation soapAction="http://tempuri.org/ClienteObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteRelatorio">
+      <soap:operation soapAction="http://tempuri.org/ClienteRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeSalvar">
+      <soap:operation soapAction="http://tempuri.org/UnidadeSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListar">
+      <soap:operation soapAction="http://tempuri.org/UnidadeListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListarPorCliente">
+      <soap:operation soapAction="http://tempuri.org/UnidadeListarPorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeExcluir">
+      <soap:operation soapAction="http://tempuri.org/UnidadeExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeObter">
+      <soap:operation soapAction="http://tempuri.org/UnidadeObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroSalvar">
+      <soap:operation soapAction="http://tempuri.org/GeneroSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroListar">
+      <soap:operation soapAction="http://tempuri.org/GeneroListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroExcluir">
+      <soap:operation soapAction="http://tempuri.org/GeneroExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroObter">
+      <soap:operation soapAction="http://tempuri.org/GeneroObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodSalvar">
+      <soap:operation soapAction="http://tempuri.org/MoodSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodListar">
+      <soap:operation soapAction="http://tempuri.org/MoodListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodExcluir">
+      <soap:operation soapAction="http://tempuri.org/MoodExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodObter">
+      <soap:operation soapAction="http://tempuri.org/MoodObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaSalvar">
+      <soap:operation soapAction="http://tempuri.org/MusicaSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListar">
+      <soap:operation soapAction="http://tempuri.org/MusicaListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <soap:operation soapAction="http://tempuri.org/MusicaListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaExcluir">
+      <soap:operation soapAction="http://tempuri.org/MusicaExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaObter">
+      <soap:operation soapAction="http://tempuri.org/MusicaObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoSalvar">
+      <soap:operation soapAction="http://tempuri.org/MusicaAvaliacaoSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <soap:operation soapAction="http://tempuri.org/MusicaAvaliacaoOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaRelatorio">
+      <soap:operation soapAction="http://tempuri.org/MusicaRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaSalvar">
+      <soap:operation soapAction="http://tempuri.org/VinhetaSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListar">
+      <soap:operation soapAction="http://tempuri.org/VinhetaListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListarPorCliente">
+      <soap:operation soapAction="http://tempuri.org/VinhetaListarPorCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaExcluir">
+      <soap:operation soapAction="http://tempuri.org/VinhetaExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaObter">
+      <soap:operation soapAction="http://tempuri.org/VinhetaObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaRelatorio">
+      <soap:operation soapAction="http://tempuri.org/VinhetaRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistSalvar">
+      <soap:operation soapAction="http://tempuri.org/PlaylistSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistBaixar">
+      <soap:operation soapAction="http://tempuri.org/PlaylistBaixar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistListar">
+      <soap:operation soapAction="http://tempuri.org/PlaylistListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistExcluir">
+      <soap:operation soapAction="http://tempuri.org/PlaylistExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <soap:operation soapAction="http://tempuri.org/PlaylistAtivacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <soap:operation soapAction="http://tempuri.org/PlaylistObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObterCompleto">
+      <soap:operation soapAction="http://tempuri.org/PlaylistObterCompleto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistRelatorio">
+      <soap:operation soapAction="http://tempuri.org/PlaylistRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioSalvar">
+      <soap:operation soapAction="http://tempuri.org/UsuarioSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioListar">
+      <soap:operation soapAction="http://tempuri.org/UsuarioListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioExcluir">
+      <soap:operation soapAction="http://tempuri.org/UsuarioExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioAlterarStatus">
+      <soap:operation soapAction="http://tempuri.org/UsuarioAlterarStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioObter">
+      <soap:operation soapAction="http://tempuri.org/UsuarioObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioEnviarDados">
+      <soap:operation soapAction="http://tempuri.org/UsuarioEnviarDados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioValidar">
+      <soap:operation soapAction="http://tempuri.org/UsuarioValidar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoListar">
+      <soap:operation soapAction="http://tempuri.org/PlaylistAtualizacaoListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoRelatorio">
+      <soap:operation soapAction="http://tempuri.org/PlaylistAtualizacaoRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveListar">
+      <soap:operation soapAction="http://tempuri.org/PlaylistChaveListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveRelatorio">
+      <soap:operation soapAction="http://tempuri.org/PlaylistChaveRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAvaliacaoRelatorio">
+      <soap:operation soapAction="http://tempuri.org/PlaylistAvaliacaoRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteSalvar">
+      <soap:operation soapAction="http://tempuri.org/EnqueteSalvar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteListar">
+      <soap:operation soapAction="http://tempuri.org/EnqueteListar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteExcluir">
+      <soap:operation soapAction="http://tempuri.org/EnqueteExcluir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteObter">
+      <soap:operation soapAction="http://tempuri.org/EnqueteObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VencimentoRelatorio">
+      <soap:operation soapAction="http://tempuri.org/VencimentoRelatorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AjaxServicesSoap12" type="tns:AjaxServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObterSessao">
+      <soap12:operation soapAction="http://tempuri.org/ObterSessao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteSalvar">
+      <soap12:operation soapAction="http://tempuri.org/ClienteSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteListar">
+      <soap12:operation soapAction="http://tempuri.org/ClienteListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteExcluir">
+      <soap12:operation soapAction="http://tempuri.org/ClienteExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteObter">
+      <soap12:operation soapAction="http://tempuri.org/ClienteObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClienteRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/ClienteRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeSalvar">
+      <soap12:operation soapAction="http://tempuri.org/UnidadeSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListar">
+      <soap12:operation soapAction="http://tempuri.org/UnidadeListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeListarPorCliente">
+      <soap12:operation soapAction="http://tempuri.org/UnidadeListarPorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeExcluir">
+      <soap12:operation soapAction="http://tempuri.org/UnidadeExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnidadeObter">
+      <soap12:operation soapAction="http://tempuri.org/UnidadeObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroSalvar">
+      <soap12:operation soapAction="http://tempuri.org/GeneroSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroListar">
+      <soap12:operation soapAction="http://tempuri.org/GeneroListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroExcluir">
+      <soap12:operation soapAction="http://tempuri.org/GeneroExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneroObter">
+      <soap12:operation soapAction="http://tempuri.org/GeneroObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodSalvar">
+      <soap12:operation soapAction="http://tempuri.org/MoodSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodListar">
+      <soap12:operation soapAction="http://tempuri.org/MoodListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodExcluir">
+      <soap12:operation soapAction="http://tempuri.org/MoodExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MoodObter">
+      <soap12:operation soapAction="http://tempuri.org/MoodObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaSalvar">
+      <soap12:operation soapAction="http://tempuri.org/MusicaSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListar">
+      <soap12:operation soapAction="http://tempuri.org/MusicaListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/MusicaListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaExcluir">
+      <soap12:operation soapAction="http://tempuri.org/MusicaExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaObter">
+      <soap12:operation soapAction="http://tempuri.org/MusicaObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoSalvar">
+      <soap12:operation soapAction="http://tempuri.org/MusicaAvaliacaoSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <soap12:operation soapAction="http://tempuri.org/MusicaAvaliacaoOffline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/MusicaRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaSalvar">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListar">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaListarPorCliente">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaListarPorCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaExcluir">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaObter">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VinhetaRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/VinhetaRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistSalvar">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistBaixar">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistBaixar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistListar">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistExcluir">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistAtivacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObterCompleto">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistObterCompleto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioSalvar">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioListar">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioExcluir">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioAlterarStatus">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioAlterarStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioObter">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioEnviarDados">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioEnviarDados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioValidar">
+      <soap12:operation soapAction="http://tempuri.org/UsuarioValidar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoListar">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistAtualizacaoListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtualizacaoRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistAtualizacaoRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveListar">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistChaveListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistChaveRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistChaveRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAvaliacaoRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistAvaliacaoRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteSalvar">
+      <soap12:operation soapAction="http://tempuri.org/EnqueteSalvar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteListar">
+      <soap12:operation soapAction="http://tempuri.org/EnqueteListar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteExcluir">
+      <soap12:operation soapAction="http://tempuri.org/EnqueteExcluir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnqueteObter">
+      <soap12:operation soapAction="http://tempuri.org/EnqueteObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VencimentoRelatorio">
+      <soap12:operation soapAction="http://tempuri.org/VencimentoRelatorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AjaxServices">
+    <wsdl:port name="AjaxServicesSoap" binding="tns:AjaxServicesSoap">
+      <soap:address location="http://localhost:93/AjaxServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AjaxServicesSoap12" binding="tns:AjaxServicesSoap12">
+      <soap12:address location="http://localhost:93/AjaxServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:93/AjaxServices.asmx" uri="wsdl/localhost_93/AjaxServices.asmx"/>
+    <system systemId="http://localhost:93/AjaxServices.asmx?WSDL" uri="wsdl/localhost_93/AjaxServices.asmx.wsdl"/>
+    <system systemId="http://zannamuzic.haynet.com.br/AjaxServices.asmx?WSDL" uri="wsdl/zannamuzic.haynet.com.br/AjaxServices.asmx.wsdl"/>
+    <system systemId="http://zannamuzicplay.net/AjaxServices.asmx" uri="wsdl/zannamuzicplay.net/AjaxServices.asmx"/>
+    <system systemId="http://zannamuzicplay.net/AjaxServices.asmx?WSDL" uri="wsdl/zannamuzicplay.net/AjaxServices.asmx.wsdl"/>
+    <system systemId="http://zannamuzicplay.net/AjaxServicesJava.asmx?WSDL" uri="wsdl/zannamuzicplay.net/AjaxServicesJava.asmx.wsdl"/>
+</catalog>

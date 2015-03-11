@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="MusicaListarPorPlaylist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaListarPorPlaylistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaListarPorPlaylistResult" type="tns:ArrayOfMusica" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMusica">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Musica" nillable="true" type="tns:Musica" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Musica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MusicaID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Artista" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Album" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genero" type="tns:Genero" />
+          <s:element minOccurs="1" maxOccurs="1" name="MoodID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mood" type="tns:Mood" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvaliacaoMedia" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Genero">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GeneroID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Status">
+        <s:restriction base="s:string">
+          <s:enumeration value="Todos" />
+          <s:enumeration value="Inativo" />
+          <s:enumeration value="Ativo" />
+          <s:enumeration value="Excluido" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Mood">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MoodID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descricao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MusicaAvaliacaoOffline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="musicaID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nota" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MusicaAvaliacaoOfflineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MusicaAvaliacaoOfflineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistObterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistObterResult" type="tns:Playlist" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Playlist">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PlaylistID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCriacao" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataEncerramento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Musicas" type="tns:ArrayOfMusica" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vinhetas" type="tns:ArrayOfVinheta" />
+          <s:element minOccurs="0" maxOccurs="1" name="Moods" type="tns:ArrayOfPlaylistMood" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RazaoSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CNPJ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Responsavel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Site" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataInicio" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+          <s:element minOccurs="1" maxOccurs="1" name="SegmentoID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Segmento" type="tns:Segmento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Segmento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SegmentoID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVinheta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vinheta" nillable="true" type="tns:Vinheta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vinheta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VinhetaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Intervalo" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCriacao" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Status" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPlaylistMood">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlaylistMood" nillable="true" type="tns:PlaylistMood" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlaylistMood">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Playlist" type="tns:Playlist" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mood" type="tns:Mood" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraFim" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarUltimaPlaylist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clienteID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarUltimaPlaylistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ListarUltimaPlaylistResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtivacao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClienteID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Processadorid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaylistAtivacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaylistAtivacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarPorPlaylist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="playlistID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarPorPlaylistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarPorPlaylistResult" type="tns:ArrayOfPlaylistMood" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MusicaListarPorPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaListarPorPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="MusicaListarPorPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaListarPorPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoOfflineSoapIn">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoOffline" />
+  </wsdl:message>
+  <wsdl:message name="MusicaAvaliacaoOfflineSoapOut">
+    <wsdl:part name="parameters" element="tns:MusicaAvaliacaoOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistObter" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistObterSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistObterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarUltimaPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarUltimaPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="ListarUltimaPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarUltimaPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtivacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaylistAtivacao" />
+  </wsdl:message>
+  <wsdl:message name="PlaylistAtivacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaylistAtivacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarPorPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarPorPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="ListarPorPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarPorPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AjaxServicesJavaSoap">
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <wsdl:input message="tns:MusicaListarPorPlaylistSoapIn" />
+      <wsdl:output message="tns:MusicaListarPorPlaylistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <wsdl:input message="tns:MusicaAvaliacaoOfflineSoapIn" />
+      <wsdl:output message="tns:MusicaAvaliacaoOfflineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <wsdl:input message="tns:PlaylistObterSoapIn" />
+      <wsdl:output message="tns:PlaylistObterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUltimaPlaylist">
+      <wsdl:input message="tns:ListarUltimaPlaylistSoapIn" />
+      <wsdl:output message="tns:ListarUltimaPlaylistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <wsdl:input message="tns:PlaylistAtivacaoSoapIn" />
+      <wsdl:output message="tns:PlaylistAtivacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPorPlaylist">
+      <wsdl:input message="tns:ListarPorPlaylistSoapIn" />
+      <wsdl:output message="tns:ListarPorPlaylistSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AjaxServicesJavaSoap" type="tns:AjaxServicesJavaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <soap:operation soapAction="http://tempuri.org/MusicaListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <soap:operation soapAction="http://tempuri.org/MusicaAvaliacaoOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <soap:operation soapAction="http://tempuri.org/PlaylistObter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUltimaPlaylist">
+      <soap:operation soapAction="http://tempuri.org/ListarUltimaPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <soap:operation soapAction="http://tempuri.org/PlaylistAtivacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPorPlaylist">
+      <soap:operation soapAction="http://tempuri.org/ListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AjaxServicesJavaSoap12" type="tns:AjaxServicesJavaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MusicaListarPorPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/MusicaListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MusicaAvaliacaoOffline">
+      <soap12:operation soapAction="http://tempuri.org/MusicaAvaliacaoOffline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistObter">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistObter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUltimaPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/ListarUltimaPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaylistAtivacao">
+      <soap12:operation soapAction="http://tempuri.org/PlaylistAtivacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPorPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/ListarPorPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AjaxServicesJava">
+    <wsdl:port name="AjaxServicesJavaSoap" binding="tns:AjaxServicesJavaSoap">
+      <soap:address location="http://zannamuzicplay.net/AjaxServicesJava.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AjaxServicesJavaSoap12" binding="tns:AjaxServicesJavaSoap12">
+      <soap12:address location="http://zannamuzicplay.net/AjaxServicesJava.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
